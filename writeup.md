@@ -21,8 +21,11 @@ Validation Set: 4410 samples
 Test Set:       12630 samples
 ```
 #### 2. Dataset Summary & Exploration
-- In this step, we randomly choose a image and print out values for all 3 channels
+- In this step, we randomly choose a image and print out values for all 3 channels.
+
 ![Randomly chosen input image][image1]
+
+- This gives an idea that how this 32x32 image has three channels of RGB where each of them represents a intensity level of respective channel.
 #### 3. Design and Test a Model Architecture
 - In this section, we take LeNet as basic architecture and add a few layers to improve accuracy for German Traffic signs.
 - Before feeding the model with data, we pre-process the images.
@@ -97,7 +100,8 @@ Test Set:       12630 samples
 | 4.png  | Traffic signal                                               |
 | 5.png  | Roundabout mandatory                                         |
 
-The model was correctly able to TODO which gives an accuracy of TODO.
+- The model was correctly able to predict 4 out of 5 images correctly which gives an accuracy of 90%.
+- The reason behind this is that image of 'General Caution' and 'Traffic Signal' look very similar except for the color imformation that signals carry. Since in this project, we are using grayscale image, it is possible that color information is lost and hence model fails to correctly predict traffic signal.
 - In the last section of project, we are expected to print the top 5 softmax probabilities for each of the image.
 - Following is the graphical representation of softmax probabilities predicted for each image.
 
@@ -106,7 +110,6 @@ The model was correctly able to TODO which gives an accuracy of TODO.
 ![Softmax probabilities for Sign 3][image11]
 ![Softmax probabilities for Sign 4][image12]
 ![Softmax probabilities for Sign 5][image13]
-
 
 [//]: # (Image References)
 
