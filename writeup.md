@@ -8,7 +8,7 @@
 
 ##### Document objective
 - The goal of this document is to summarize the steps, preprocessing and neural network architecture.
-- TODO
+- This document also reflects on how the trained model works on test images found on web.
 ---
 ### Pipeline architecture
 #### 1. Load the data
@@ -22,13 +22,15 @@ Test Set:       12630 samples
 ```
 #### 2. Dataset Summary & Exploration
 - In this step, we randomly choose a image and print out values for all 3 channels
-- We also show project how the image looks.
+![Randomly chosen input image][image1]
 #### 3. Design and Test a Model Architecture
 - In this section, we take LeNet as basic architecture and add a few layers to improve accuracy for German Traffic signs.
 - Before feeding the model with data, we pre-process the images.
 - Since machine learning model works in 'Garbage In, Garbage Out' model, its important that fed data is free from any irregularities such as impossible data combinations or missing values. If not, feeding such data to model and using such model to predict images would result in misleading results. [Source: Pre-processing-Wikipedia](https://en.wikipedia.org/wiki/Data_pre-processing)
-- For this project, we convert the image to gray-scale. Converting images to gray-scale helps lowering the complexity associated with dealing color images.
+- For this project, we convert the image to grayscale. Converting images to gray-scale helps lowering the complexity associated with dealing color images.
+![Grayscaled image][image2]
 - These grayscale converted image are now fed into histogram equalization stage in order to enhance the contrast in each image.
+![Histogram equalization][image3]
 - After pre-processing images, data is fed to neural network of following architecture.
 
 | Layer                 |     Description                               |
@@ -50,6 +52,50 @@ Test Set:       12630 samples
 | Fully connected       | Input 84, Output 43                           |
 
 - To train this model, I used AdamOptimizer optimizer to reduce the loss.
-- As choice of hyper parameters, it was observed that learning rate of 0.0007 and 100 epochs helps us achieve the target accuracy of 0.93 or better.
+- As choice of hyper parameters, it was observed that learning rate of 0.0007 and 100 epochs helps us achieve the target accuracy of 0.93 or higher.
 - Before feeding the input batch to model, data is shuffled using the shuffle module.
--
+- After using above mentioned network architecture along with hyper parameters value, we are able to achive a accuracy of 0.95 on validation set.
+- My final model results are:
+
+| Data set type         | Accuracy achieved                             |
+|:---------------------:|:---------------------------------------------:|
+| Training set          | 0.99                                          |
+| Validation set        | 0.97                                          |
+| Test set              | 0.94                                          |
+
+- This results were achieved using iterative model of LeNet with slight modifications to the CNN architecture. Without these modifications, the accuracy of model could never hit 0.90.
+- These modifications are:
+    - Adding a dropout layer to remove redundancies
+    - Adding CNN layer of 3x3 before connecting the Fully Connected layer
+    - After training, this model is saved in a file.
+### Test model on New images
+- In this section, we are supposed to fetch at least 5 images of German traffic signs them from web, and use them as test images for our previously trained model.
+- Here are the five images that I choose for my project.
+![German traffic Sign from web][image4]
+![German traffic Sign from web][image5]
+![German traffic Sign from web][image6]
+![German traffic Sign from web][image7]
+![German traffic Sign from web][image8]
+- These images are then fed into same pre-processing pipeline as training data set was fed through (i.e. grayscale, and histogram equalization)
+- For this, we restore the previously stored model from a file.
+- Then the pre-processed test image data is fed to the model to predict softmax probabilities for each image.
+- Based on the probablities generated, corresponding labels are matched.
+- The expected labels for these images was hard coded into internal buffer.
+- These labels were then compared against model generated labels for test images.
+
+| Image         | Prediction                             |
+|:---------------------:|:---------------------------------------------:|
+| 1.png  | Yeild                                                        |
+| 2.png  | Road work                                                    |
+| 3.png  | Right turn ahead                                             |
+| 4.png  | Traffic signal                                               |
+| 5.png  | Roundabout mandatory                                         |
+
+The model was correctly able to TODO which gives an accuracy of TODO.
+- In the last section of project, we are expected to print the top 5 softmax probabilities for each of the image.
+- Following is the graphical representation of softmax probabilities predicted for each image.
+![Softmax probabilities for Sign 1][image9]
+![Softmax probabilities for Sign 2][image10]
+![Softmax probabilities for Sign 3][image11]
+![Softmax probabilities for Sign 4][image12]
+![Softmax probabilities for Sign 5][image13]
