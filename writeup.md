@@ -99,3 +99,20 @@ The model was correctly able to TODO which gives an accuracy of TODO.
 ![Softmax probabilities for Sign 3][image11]
 ![Softmax probabilities for Sign 4][image12]
 ![Softmax probabilities for Sign 5][image13]
+
+
+[//]: # (Image References)
+
+[image1]: ./writeup_stuff/input_image.png "Randomly chosen input image"
+[image2]: ./writeup_stuff/grayscale.png "Grayscaling"
+[image3]: ./writeup_stuff/equalize_hist.png "Output from Equalize Histogram"
+[image4]: ./writeup_stuff/test_images/1.png "Traffic Sign 1"
+[image5]: ./writeup_stuff/test_images/2.png "Traffic Sign 2"
+[image6]: ./writeup_stuff/test_images/3.png "Traffic Sign 3"
+[image7]: ./writeup_stuff/test_images/4.png "Traffic Sign 4"
+[image8]: ./writeup_stuff/test_images/5.png "Traffic Sign 5"
+[image9]: ./writeup_stuff/softmax/1.png "Softmax Probabilities for Sign 1"
+[image10]: ./writeup_stuff/softmax/2.png "Softmax Probabilities for Sign 2"
+[image11]: ./writeup_stuff/softmax/3.png "Softmax Probabilities for Sign 3"
+[image12]: ./writeup_stuff/softmax/4.png "Softmax Probabilities for Sign 4"
+[image13]: ./writeup_stuff/softmax/5.png "Softmax Probabilities for Sign 5"
