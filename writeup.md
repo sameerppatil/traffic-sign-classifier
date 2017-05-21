@@ -21,16 +21,23 @@ Validation Set: 4410 samples
 Test Set:       12630 samples
 ```
 #### 2. Dataset Summary & Exploration
-- In this step, we randomly choose a image and print out values for all 3 channels
+- In this step, we randomly choose a image and print out values for all 3 channels.
+
 ![Randomly chosen input image][image1]
+
+- This gives an idea that how this 32x32 image has three channels of RGB where each of them represents a intensity level of respective channel.
 #### 3. Design and Test a Model Architecture
 - In this section, we take LeNet as basic architecture and add a few layers to improve accuracy for German Traffic signs.
 - Before feeding the model with data, we pre-process the images.
 - Since machine learning model works in 'Garbage In, Garbage Out' model, its important that fed data is free from any irregularities such as impossible data combinations or missing values. If not, feeding such data to model and using such model to predict images would result in misleading results. [Source: Pre-processing-Wikipedia](https://en.wikipedia.org/wiki/Data_pre-processing)
 - For this project, we convert the image to grayscale. Converting images to gray-scale helps lowering the complexity associated with dealing color images.
+
 ![Grayscaled image][image2]
+
 - These grayscale converted image are now fed into histogram equalization stage in order to enhance the contrast in each image.
+
 ![Histogram equalization][image3]
+
 - After pre-processing images, data is fed to neural network of following architecture.
 
 | Layer                 |     Description                               |
@@ -71,11 +78,13 @@ Test Set:       12630 samples
 ### Test model on New images
 - In this section, we are supposed to fetch at least 5 images of German traffic signs them from web, and use them as test images for our previously trained model.
 - Here are the five images that I choose for my project.
+
 ![German traffic Sign from web][image4]
 ![German traffic Sign from web][image5]
 ![German traffic Sign from web][image6]
 ![German traffic Sign from web][image7]
 ![German traffic Sign from web][image8]
+
 - These images are then fed into same pre-processing pipeline as training data set was fed through (i.e. grayscale, and histogram equalization)
 - For this, we restore the previously stored model from a file.
 - Then the pre-processed test image data is fed to the model to predict softmax probabilities for each image.
@@ -91,15 +100,16 @@ Test Set:       12630 samples
 | 4.png  | Traffic signal                                               |
 | 5.png  | Roundabout mandatory                                         |
 
-The model was correctly able to TODO which gives an accuracy of TODO.
+- The model was correctly able to predict 4 out of 5 images correctly which gives an accuracy of 90%.
+- The reason behind this is that image of 'General Caution' and 'Traffic Signal' look very similar except for the color imformation that signals carry. Since in this project, we are using grayscale image, it is possible that color information is lost and hence model fails to correctly predict traffic signal.
 - In the last section of project, we are expected to print the top 5 softmax probabilities for each of the image.
 - Following is the graphical representation of softmax probabilities predicted for each image.
+
 ![Softmax probabilities for Sign 1][image9]
 ![Softmax probabilities for Sign 2][image10]
 ![Softmax probabilities for Sign 3][image11]
 ![Softmax probabilities for Sign 4][image12]
 ![Softmax probabilities for Sign 5][image13]
-
 
 [//]: # (Image References)
 
